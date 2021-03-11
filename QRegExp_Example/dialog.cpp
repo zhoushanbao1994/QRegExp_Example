@@ -29,8 +29,11 @@ Dialog::Dialog(QWidget *parent)
     Tre[count].mean      = "0~9";                   // 含义
     Tre[count].pattern   = "[0-9]";                 // 正则表达式
     count++;
+    Tre[count].mean      = "-9~9";                   // 含义
+    Tre[count].pattern   = "[0-9]|-[1-9]";           // 正则表达式
+    count++;
     Tre[count].mean      = "0~99";                  // 含义
-    Tre[count].pattern   = "0|[1-9]\\d{0,1}";       // 正则表达式
+    Tre[count].pattern   = "0|[1-9]\\d{0,1}";       // 正则表达式    "\d"代表任意数字（由于C++所以用"\\"表示"\"）
     count++;
     Tre[count].mean      = "0~999";                 // 含义
     Tre[count].pattern   = "0|[1-9]\\d{0,2}";       // 正则表达式
@@ -55,6 +58,10 @@ Dialog::Dialog(QWidget *parent)
     count++;
     Tre[count].mean      = "0.0~10,一位小数";               // 含义（不能输入10.0）
     Tre[count].pattern   = "^?(10|[0-0]?\\d(\\.\\d{1})?)$";// 正则表达式
+    count++;
+    Tre[count].mean      = "-999.99~999.99";               // 含义（不能输入10.0）
+    Tre[count].pattern   = "^[-]?[\\d]{1,3}[.][\\d]{0,2}$";// 正则表达式
+
 
 
     for(int countId = 0; countId < 16; countId++) {
